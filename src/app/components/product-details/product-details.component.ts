@@ -10,6 +10,7 @@ import { UsersService } from 'src/app/shared/service/users.service';
 export class ProductDetailsComponent implements OnInit {
 
   details: any = [];
+  reviews: any = [];
   starrating: any = new Array(5);
   prodRating1 = 3;
   prodRating2 = 4;
@@ -18,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getProductDetails(this.route.snapshot.params['id']);
+    this.getReviewDetails(this.route.snapshot.params['id']);
   }
 
   public getProductDetails(id: String) {
@@ -26,6 +28,16 @@ export class ProductDetailsComponent implements OnInit {
     {
       console.log(data);
       this.details = data;
+    });
+  }
+
+  public getReviewDetails(id: String) {
+    this.userService.getReviews(id)
+    .subscribe((data) =>
+    {
+      console.log(data);
+      this.reviews = data;
+      console.log(this.reviews[0].reviewComment);
     });
   }
 
