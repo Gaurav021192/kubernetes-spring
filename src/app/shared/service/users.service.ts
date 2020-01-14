@@ -9,16 +9,16 @@ export class UsersService {
   constructor(private httpClient: HttpClient) { }
 
   public getUsers() {
-    return this.httpClient.get('http://34.93.25.183/allProducts');
+    return this.httpClient.get('http://' + window.location.host + '/details/');
   }
 
   // https://jsonplaceholder.typicode.com/users
 
   public getUserDetails(id: String) {
-    return this.httpClient.get('http://34.93.25.183/productDetails/' + id);
+    return this.httpClient.get('http://' + window.location.host + '/details/' + id);
   }
 
   public getReviews(id: String) {
-    return this.httpClient.get('http://35.244.58.199/productReview/' + id);
+    return this.httpClient.get('http://' + window.location.host + '/reviews/' + id);
   }
 }
